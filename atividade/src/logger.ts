@@ -9,3 +9,14 @@ export async function log(mensagem: string): Promise<void> {
   await fs.appendFile(CAMINHO_LOG, linha, "utf-8");
 }
 
+export async function lerLogs(): Promise<string[]> {
+  try {
+    const conteudo = await fs.readFile(CAMINHO_LOG, "utf-8");
+
+    return conteudo
+      .split("\n")
+      .filter((linha) => linha.trim().length > 0);
+  } catch {
+    return [];
+  }
+}
