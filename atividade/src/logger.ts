@@ -20,3 +20,17 @@ export async function lerLogs(): Promise<string[]> {
     return [];
   }
 }
+
+async function testar(): Promise<void> {
+  console.log("Registrand logs...");
+
+  await log("Aplicacão iniciada com sucesso.");
+  await log("Usuário realizou login.");
+
+  const logs = await lerLogs();
+
+  console.log("\n--- Linhas lidas de app.log ---");
+  console.log(logs);
+}
+
+testar();
